@@ -7,8 +7,10 @@ function App() {
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/message')
+    axios.get('venkatesh-backend-svc/api/message')
+      // console.log("message")
       .then(response => {
+        console.log("message", response)
         setMessage(response.data.message);
       })
       .catch(error => {
@@ -22,7 +24,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/api/message', { newMessage })
+    axios.post('venkatesh-backend-svc/api/message', { newMessage })
       .then(response => {
         setMessage(response.data.message);
         setNewMessage('');
